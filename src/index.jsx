@@ -2,6 +2,7 @@
 
 // Load up the application styles
 require("../styles/application.scss");
+//the above file imported home.scss -where i had my styling- into it 
 
 // Render the top-level React component
 import React from 'react';
