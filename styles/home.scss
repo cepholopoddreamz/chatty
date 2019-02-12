@@ -4,15 +4,15 @@ h1 {
 
   body {
     background: white;
-    color: black;
+    color: rgb(60, 60, 60);
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+    font-size: 17px;
     margin: 70px 0;
   }
 
   .chatbar {
     background: teal;
-    border-top: 1px solid black;
+    border-top: 1px solid rgb(60, 60, 60);
     bottom: 0;
     display: flex;
     left: 0;
@@ -21,14 +21,23 @@ h1 {
     right: 0;
   }
 
+  
+
+
   .chatbar-message,
   .chatbar-username {
-    border: 1px solid black;
+    border: 1px solid rgb(60, 60, 60);
     display: block;
     height: 40px;
     line-height: 40px;
     margin: 5px;
     padding: 0 9px;
+  }
+
+  .chatbar-message {
+    //width: 400px;
+    float: left;
+    //justify-content: flex-start;
   }
 
   .chatbar-message {
@@ -66,7 +75,7 @@ h1 {
   }
 
   .navbar {
-    background: teal;
+    background: rgb(46, 185, 132);
     border-bottom: 1px solid black;
     height: 60px;
     left: 0;
@@ -87,3 +96,5 @@ h1 {
     padding: 0 10px;
     text-decoration: none;
   }
+
+ 

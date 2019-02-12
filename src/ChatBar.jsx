@@ -1,11 +1,14 @@
-// class NewTaskForm extends Component {
+// class NewMessageForm extends Component {
 //   render() {
 //   const onSubmit = evt => {
 //   evt.preventDefault();
-//   const taskNameInput = evt.target.elements.taskName;
-//   this.props.addTaskName(taskNameInput.value);
-//   taskNameInput.value = "";
+//   const messageNameInput = evt.target.elements.content;
+//   this.props.addMessageName(taskMessageInput.value);
+//   taskMessageInput.value = "";
 //   };
+
+//event handler is triggered by each key stroke - detect enter key. 
+// when the enter is detected i call the function in the parent 
   
 //   return (
 //   <form onSubmit={onSubmit}>
@@ -16,31 +19,64 @@
 //   }
 //   }
 
-/* <footer class="chatbar">
-  <input class="chatbar-username" placeholder="Your Name (Optional)" />
-  <input class="chatbar-message" placeholder="Type a message and hit ENTER" />
-</footer> */
+
+// handleSubmit = event => {
+//   const comment = this. state.comment;
+//   this.addQuote(comment);
+//   this.setState({comment:''});
+// }
 
 /* <form onSubmit={onSubmit}>
-  <input type="text" className="chatbar-username" placeholder="Your Name" />
-  <input type="text" className="chatbar-message" placeholder="Type a message and hit ENTER" />
-  </form> */
+<input type="text" className="chatbar-username" placeholder="Your Name" />
+<input type="text" className="chatbar-message" placeholder="Type a message and hit ENTER" />
+</form> */
+
+
+
   
 import React from 'react';
 
+//function MessageItem (props)  = {
+// 
+//}
+
+// const messageItems = this.state.messages.map(message =>(
+  //<MessageItem key ={message.id} message = {message}/>
+//));
+
+
+
+
+// const onKeyUp = evt => {
+//   evt.preventDefault();
+//   const messageInput = evt.target.className.chatbar-message;
+//   //props.addMessage(messageInput.value);
+//   //MessageInput.value = "";
+// }
+
 export default class ChatBar extends React.Component {
-  render() {
-    const onSubmit = evt => {
-      evt.preventDefault();
-      //const chatUsername = evt.target;
-      //?? chatbar-username??
+
+  handleKeyUp = event => {
+    event.preventDefault();
+    console.log('firing')
+    //const message = this.state.message;
+    if(event.key == 'Enter'){
+         console.log('pressed!');
+         console.log(event.target.value);
+         //this.setState({ value: event.target.value })
+    }
+    //valid entry detection stuff
+    // else if (this.onKeyUp){
+    //   //onKeyUp
+    // }
   };
+  render() {
   return (
     <footer className="chatbar">
-    <form onSubmit={onSubmit}>
-    <input type="text" className="chatbar-username" placeholder="Your Name" />
-    <input type="text" className="chatbar-message" placeholder="Type a message and hit ENTER" />
-    </form>
+  
+    <input className="chatbar-username" placeholder="Your Name (Optional)" onKeyUp={this.handleKeyUp} />
+  <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyUp={this.handleKeyUp}/>
+
     </footer>
     );
   }
