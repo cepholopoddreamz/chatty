@@ -4,29 +4,39 @@ import ChatBar from './ChatBar.jsx';
 import MessageList from './MessageList.jsx';
 
 class App extends Component {
-  // this.setState ({}); // asnych -- and you can pass down a callback function
-
-  //state = {
-    //messages: [],
-    //con
-  //}
-
+//function that passes the values entered in the input box
   constructor(props) {
     super(props);
     this.state = {
     //loading: true,
     messages: [],
-    // do i need a userId prop too?
     currentUser: '' //{} // has more then that
     };
   }
 
-  // componentDidMount() {
-  //   // After 3 seconds, set `loading` to false in the state.
-  //   setTimeout(() => {
-  //     this.setState({loading: false}); // this triggers a re-render!
-  //   }, 3000)
-  // }
+  addMessage = message => {
+    const newMessage = {
+      text: message
+      //messages: [],
+    }
+    // merging my current array of quotes with new quotes
+    const newMessages = [...this.state.messages, newMessage];
+    console.log(newMessage);
+
+    // this.setState({ messages: newMessages }, () => console.log(this.state));
+  }
+
+  addUser = userId => {
+    const newUser = {
+      username: userId,
+      //messages: [],
+    }
+    // merging my current array of quotes with new quotes
+    const newUsers = [...this.state.currentUser, newUser];
+    console.log(newUser);
+
+    // this.setState({ messages: newMessages }, () => console.log(this.state));
+  }
 
 
 
@@ -35,7 +45,7 @@ class App extends Component {
       <div>
       <NavBar />
       <MessageList />
-      <ChatBar />
+      <ChatBar addMessage={this.addMessage} addUser={this.addUser}/>
       </div>
     );
   }

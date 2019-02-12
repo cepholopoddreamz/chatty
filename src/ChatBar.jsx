@@ -56,26 +56,39 @@ import React from 'react';
 
 export default class ChatBar extends React.Component {
 
-  handleKeyUp = event => {
+  handleMessage = event => {
     event.preventDefault();
     console.log('firing')
     //const message = this.state.message;
     if(event.key == 'Enter'){
-         console.log('pressed!');
-         console.log(event.target.value);
-         //this.setState({ value: event.target.value })
+      console.log('pressed!');
+      console.log(event.target.value);
+      //this.setState({ value: event.target.value })
+      const message = event.target.value;
+    this.props.addMessage(message); //message
+    //this.setState({ message: event.target.value });
     }
-    //valid entry detection stuff
-    // else if (this.onKeyUp){
-    //   //onKeyUp
-    // }
+  };
+
+  handleUser = event => {
+    event.preventDefault();
+    console.log('firing')
+    //const message = this.state.message;
+    if(event.key == 'Enter'){
+      console.log('pressed!');
+      console.log(event.target.value);
+      //this.setState({ value: event.target.value })
+      const userId = event.target.value;
+    this.props.addUser(userId); //message
+    //this.setState({ message: event.target.value });
+    }
   };
   render() {
   return (
     <footer className="chatbar">
   
-    <input className="chatbar-username" placeholder="Your Name (Optional)" onKeyUp={this.handleKeyUp} />
-  <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyUp={this.handleKeyUp}/>
+    <input className="chatbar-username" placeholder="Your Name (Optional)" onKeyUp={this.handleUser} />
+  <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyUp={this.handleMessage}/>
 
     </footer>
     );
