@@ -19,17 +19,23 @@ class App extends Component {
     };
   }
 
+  sendMessage = newMessage => {
+    this.socketServer.send(JSON.stringify(newMessage))
+  }
+
   addMessage = message => {
     const newMessage = {
      content: message,
-     username: this.state.currentUser,
-     id: uuid.v1()
+     username: this.state.currentUser || 'anonymous' ,
+     //id: uuid.v1()
     }
+    this.sendMessage(newMessage);
     // merging my current array of quotes with new quotes
     const newMessages = [...this.state.messages, newMessage];
     //console.log(newMessage);
     this.setState({ messages: newMessages }, () => console.log(this.state));
   }
+
 
   addUser = userId => {
     this.setState({ currentUser: userId }, () => console.log(this.state));
@@ -52,9 +58,7 @@ class App extends Component {
 
     this.socketServer.onmessage = message => {
       const serverMessage = JSON.parse(message.data);
-      console.log(`---------------${serverMessage}`)
-      // this.socketServer.send (serverMessage);
-
+      console.log(`---------------${message}`)
       //app.server.send
       //ws.send (serverMessage);
       // switch (serverMessage.type) {

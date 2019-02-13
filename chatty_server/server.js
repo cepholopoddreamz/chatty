@@ -33,6 +33,13 @@ wss.on('connection', (ws) => {
   ws.on('message', message => {
     const clientMessage = JSON.parse(message);
     console.log(message);
+    // const outgoingMessage = {
+    //   ...clientMessage,
+    //   id: uuidv4(),
+    //   type: 'incomingNotification'
+    // }
+    // wss.send(JSON.stringify(outgoingMessage));
+    
   });
 
   ws.on('close', () => console.log('Client disconnected'));
