@@ -18,7 +18,8 @@ class App extends Component {
 
   addMessage = message => {
     const newMessage = {
-     content: message
+     content: message,
+     username: this.state.currentUser
     }
     // merging my current array of quotes with new quotes
     const newMessages = [...this.state.messages, newMessage];
@@ -27,26 +28,23 @@ class App extends Component {
   }
 
   addUser = userId => {
-    const newUser = {
-      username: userId,
-    }
+    // const newUser = {
+    //   username: userId
+    // }
     // merging my current array of quotes with new quotes
-    const newUsers = [...this.state.currentUser, newUser];
-    console.log(newUser);
-    // this.setState({ messages: newMessages }, () => console.log(this.state));
+    // const newUsers = [...this.state.messages, newUser];
+    // console.log(newUser);
+    this.setState({ currentUser: userId }, () => console.log(this.state));
   }
 
-  
+  //if this is adding 'all the things' as a spread .... do i need a separate function? 
 
-  // newMessages = messages => {
-  //   console.log(messages)
-  // }
 
   render() {
     return (
       <div>
       <NavBar />
-      <MessageList messages = {this.state.messages}/>
+      <MessageList messages = {this.state.messages} username = {this.state.currentUser} />
       <ChatBar addMessage={this.addMessage} addUser={this.addUser}/>
       </div>
     );
