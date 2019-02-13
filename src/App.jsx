@@ -10,12 +10,15 @@ class App extends Component {
     super(props);
     this.state = {
     //loading: true,
-      messages: [{
-        username: 'Fred Moten',
-        content: "we can speculate on the relay of our common activity, make a circle round our errant roots. Dancing is what we make of falling. Music is what we make of music's absence, the real presence making music underneath. I'm exhausted so my soul is rested.",
-        id: uuid.v1()
-      }],
-      currentUser: '' 
+      // messages: [{
+      //   username: 'Fred Moten',
+      //   content: "we can speculate on the relay of our common activity, make a circle round our errant roots. Dancing is what we make of falling. Music is what we make of music's absence, the real presence making music underneath. I'm exhausted so my soul is rested.",
+      //   id: uuid.v1()
+      // }],
+      // currentUser: '' 
+      currentUser: {name: "Bob"},
+      messages: [] 
+      //because currentUser is now an object, where it was referenced befow, i needed to add the key currentUser.name so it doesn't just return object object
     };
   }
 
@@ -26,7 +29,7 @@ class App extends Component {
   addMessage = message => {
     const newMessage = {
      content: message,
-     username: this.state.currentUser || 'anonymous' ,
+     username: this.state.currentUser.name || 'anonymous' ,
      //id: uuid.v1()
     }
     this.sendMessage(newMessage);
@@ -38,7 +41,7 @@ class App extends Component {
 
 
   addUser = userId => {
-    this.setState({ currentUser: userId }, () => console.log(this.state));
+    this.setState({ currentUser: {name: userId} }, () => console.log(this.state));
   }
   componentDidMount() {
   // const url = 'ws://localhost:3001/';
@@ -74,7 +77,7 @@ class App extends Component {
     return (
       <div>
       <NavBar />
-      <MessageList messages = {this.state.messages} username = {this.state.currentUser} />
+      <MessageList messages = {this.state.messages} username = {this.state.currentUser.name} />
       <ChatBar addMessage={this.addMessage} addUser={this.addUser}/>
       </div>
     );
