@@ -61,7 +61,12 @@ class App extends Component {
 
     this.socketServer.onmessage = message => {
       const serverMessage = JSON.parse(message.data);
-      console.log(`incomingmessage-----${serverMessage}`)
+      console.log(`incomingid-----${serverMessage.content}`)
+      //console.log(`incomingmessage-----${serverMessage.name}`)
+      console.log(serverMessage.username)
+      console.log(message)
+
+      //clientMessage
       //app.server.send
       //ws.send (serverMessage);
       // switch (serverMessage.type) {

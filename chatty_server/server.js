@@ -30,11 +30,9 @@ wss.on('connection', (ws) => {
   ws.on('message', message => {
     console.log(message);//printing in the terminal
     const clientMessage = JSON.parse(message);
-    const outgoingMessage = {
-      ...clientMessage,
-      id: uuidv4(),
-      type: 'incomingNotification'
-    }
+    clientMessage.id = uuidv4()
+    clientMessage.type: 'incomingNotification'
+    const outgoingMessage = clientMessage;
     console.log(`------------------${outgoingMessage}`);
     wss.broadcast(JSON.stringify(outgoingMessage));
     
