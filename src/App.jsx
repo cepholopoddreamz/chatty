@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import NavBar from './NavBar.jsx';
 import ChatBar from './ChatBar.jsx';
 import MessageList from './MessageList.jsx';
+//npm install --save-dev webpack-dev-server@3.1.14
+import uuid from 'uuid';
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +12,8 @@ class App extends Component {
     //loading: true,
       messages: [{
         username: 'Fred Moten',
-        content: 'asdfdsafdasfdasadsfdssfd'
+        content: 'asdfdsafdasfdasadsfdssfd',
+        id: uuid.v1()
       }],
       currentUser: '' //{} // has more then that
     };
