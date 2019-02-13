@@ -15,7 +15,7 @@ class App extends Component {
         content: "we can speculate on the relay of our common activity, make a circle round our errant roots. Dancing is what we make of falling. Music is what we make of music's absence, the real presence making music underneath. I'm exhausted so my soul is rested.",
         id: uuid.v1()
       }],
-      currentUser: '' //{} // has more then that
+      currentUser: '' 
     };
   }
 
@@ -27,35 +27,45 @@ class App extends Component {
     }
     // merging my current array of quotes with new quotes
     const newMessages = [...this.state.messages, newMessage];
-    console.log(newMessage);
-   this.setState({ messages: newMessages }, () => console.log(this.state));
+    //console.log(newMessage);
+    this.setState({ messages: newMessages }, () => console.log(this.state));
   }
 
   addUser = userId => {
     this.setState({ currentUser: userId }, () => console.log(this.state));
   }
-
- // in App.jsx
-componentDidMount() {
+  componentDidMount() {
   // const url = 'ws://localhost:3001/';
   // this.socket = new Websocket(url);
   // this.socket.onopen = event => {
   //   console.log("Connected to socket server ")
   //   this.socket.send(JSON.stringify({message:`hello`}))
   // }
-  console.log("componentDidMount <App />");
-  setTimeout(() => {
-    console.log("Simulating incoming message");
-    // Add a new message to the list of messages in the data store
-    const newMessage = {id: 'a3', username: "Michelle", content: "Hello there!"};
-    const messages = this.state.messages.concat(newMessage)
-    // Update the state of the app component.
-    // Calling setState will trigger a call to render() in App and all child components.
-    this.setState({messages: messages})
-  }, 3000);
-}
+  const url = 'ws://localhost:3001';
+    this.socketServer = new WebSocket(url);
 
+    this.socketServer.onopen = event => {
+      //this.updateStatus(true);
 
+      this.socketServer.send(JSON.stringify({message: 'testing'}))
+    };
+
+    this.socketServer.onmessage = message => {
+      const serverMessage = JSON.parse(message.data);
+      console.log(`---------------${serverMessage}`)
+      // this.socketServer.send (serverMessage);
+
+      //app.server.send
+      //ws.send (serverMessage);
+      // switch (serverMessage.type) {
+      //   case 'incomingNotification':
+      //     this.addNewNotification(serverMessage);
+      //     break;
+      //   default:
+      //     console.log('Unknown message from server');
+      // }
+    };
+  }
   render() {
     return (
       <div>
