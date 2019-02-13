@@ -3,7 +3,7 @@ import NavBar from './NavBar.jsx';
 import ChatBar from './ChatBar.jsx';
 import MessageList from './MessageList.jsx';
 //npm install --save-dev webpack-dev-server@3.1.14
-import uuid from 'uuid';
+//import uuid from 'uuid';
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +21,14 @@ class App extends Component {
       //because currentUser is now an object, where it was referenced befow, i needed to add the key currentUser.name so it doesn't just return object object
     };
   }
+
+  // getMessage = servermessage => {
+  //   const newServerMessages = [...this.state.messages, servermessage];
+  //   //console.log(newMessage);
+  //   this.setState({ messages: newServerMessages }, () => console.log(this.state));
+
+  //   console.log(servermessage)
+  // }
 
   sendMessage = newMessage => {
     this.socketServer.send(JSON.stringify(newMessage))
@@ -62,9 +70,10 @@ class App extends Component {
     this.socketServer.onmessage = message => {
       const serverMessage = JSON.parse(message.data);
       console.log(`incomingid-----${serverMessage.content}`)
-      //console.log(`incomingmessage-----${serverMessage.name}`)
-      console.log(serverMessage.username)
+      // console.log(serverMessage.username)
       console.log(message)
+      const newServerMessages  = [...this.state.messages, serverMessage];
+      this.setState({ messages: newServerMessages  }, () => console.log(this.state));
 
       //clientMessage
       //app.server.send
