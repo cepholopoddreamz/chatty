@@ -2,16 +2,10 @@ import React from 'react';
 import Message from './Message.jsx';
 
 export default class MessageList extends React.Component {
-
-//this.props.userid --- is what is accessed by Message
-  //naming the propertise but not naming the component
-
-  // function message ()
   render() {
-
     const userthingy = this.props.username;
     console.log(`asdadfdsfasdfasfdsdfdsf ${userthingy}`);
-
+    //when the user is still anonymouse, the key doesn't work or hasn't yet been made... troubleshoot maybe. error only comes up when comment is added and new user not declared. 
     const displaymessages = this.props.messages.map(message => (
       <Message message={message} key={message.id} id={message.id}/>
     ));
@@ -19,14 +13,11 @@ export default class MessageList extends React.Component {
     // const displayusers = 
     // this.props.messages.map(message => (
     //   <Message message={userid} />
-      
     // ));
-  
     return (
     <main className="messages">
       {displaymessages}
       <div className="message system">
-        
       </div>
     </main>
     )

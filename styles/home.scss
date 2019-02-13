@@ -12,7 +12,7 @@ h1 {
 
   .chatbar {
     background: teal;
-    border-top: 1px solid rgb(60, 60, 60);
+    //border-top: 1px solid rgb(60, 60, 60);
     bottom: 0;
     display: flex;
     left: 0;
@@ -26,7 +26,7 @@ h1 {
 
   .chatbar-message,
   .chatbar-username {
-    border: 1px solid rgb(60, 60, 60);
+    //border: 1px solid rgb(60, 60, 60);
     display: block;
     height: 40px;
     line-height: 40px;
