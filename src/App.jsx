@@ -22,7 +22,8 @@ class App extends Component {
   addMessage = message => {
     const newMessage = {
      content: message,
-     username: this.state.currentUser
+     username: this.state.currentUser,
+     id: uuid.v1()
     }
     // merging my current array of quotes with new quotes
     const newMessages = [...this.state.messages, newMessage];
@@ -36,17 +37,17 @@ class App extends Component {
 
  // in App.jsx
 componentDidMount() {
-  //const url = 'ws://localhost:3001/';
-  //this.socket = new Websocket(url);
-  //this.socket.onopen = event => {
-    //console.log("Connected to socket server ")
-    //this.socket.send(JSON.stringify({message:`hello`}))
-  //}
+  // const url = 'ws://localhost:3001/';
+  // this.socket = new Websocket(url);
+  // this.socket.onopen = event => {
+  //   console.log("Connected to socket server ")
+  //   this.socket.send(JSON.stringify({message:`hello`}))
+  // }
   console.log("componentDidMount <App />");
   setTimeout(() => {
     console.log("Simulating incoming message");
     // Add a new message to the list of messages in the data store
-    const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
+    const newMessage = {id: 'a3', username: "Michelle", content: "Hello there!"};
     const messages = this.state.messages.concat(newMessage)
     // Update the state of the app component.
     // Calling setState will trigger a call to render() in App and all child components.
