@@ -59,17 +59,11 @@ export default class ChatBar extends React.Component {
     event.preventDefault();
     console.log(event.target.value);
     if(event.key == 'Enter'){
-    const userId = event.target.value;
-    this.props.addUser(userId); //message 
+    const userName= event.target.value;
+    this.props.addUser(userName); //message 
     }
   };
 
-  // handleUser = event => {
-  //   event.preventDefault();
-  //   console.log(event.target.value);
-  //   const userId = event.target.value;
-  //   this.props.addUser(userId); //message 
-  // };
 
 
 
