@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: {name: "Anonymous"},
-      messages: [] 
+      messages: [],
+      notification: null
     };
   }
 
@@ -21,24 +22,28 @@ class App extends Component {
      content: message,
      username: this.state.currentUser.name || 'anonymous' ,
      type:'incomingMessage'
+     //notification: false
     }
     this.sendMessage(newMessage);
-    
   }
 
-
   addUser = userName => {
-    const dummy_notification = {oldname:this.state.currentUser.name , newname:userName, type:'postNotification'}
+    const dummy_notification = {oldname:this.state.currentUser.name , newname:userName, type:'postNotification', content:'orange'}
     this.sendMessage(dummy_notification);
     this.setState({ currentUser: {name: userName} }, () => console.log(this.state));
   }
 
   //{type: postNotification}
 
+  //updateClientInfo = (id, username, color) = > {
+  //  console.log("Client info: " )
+//    this.updatUsername()
+
+  //}
+
   componentDidMount() {
   const url = 'ws://localhost:3001';
     this.socketServer = new WebSocket(url);
-
     this.socketServer.onopen = event => {
       //this.updateStatus(true);
 
@@ -60,14 +65,19 @@ class App extends Component {
             this.setState({ messages: newServerMessages  }, () => console.log(this.state))
           break;
         case "incomingNotification":
-        console.log('return thingy');
-        const oldname = serverMessage.oldname;
-        const newname = serverMessage.newname;
-          // handle incoming notification
+        //console.log('return thingy');
+        const newNotificationMessages  = [...this.state.messages, serverMessage];
+        this.setState({ messages: newNotificationMessages  }, () => console.log(this.state))
+
+        //const newNotificationMessages  = [...this.state.messages, serverMessage];
+        // this.setState({ notifications: newNotificationMessages  }, () => console.log(this.state))
+          
+          /// target will need to be different then messages. so you need to set a new state on a new object, maybe, for notifications... 
           break;
+        //case "usercount":
         default:
           // show an error in the console if the message type is unknown
-          throw new Error("Unknown event type " + data.type);
+          console.log("Unknown event type " + data.type);
       }
     
 
@@ -78,10 +88,13 @@ class App extends Component {
     return (
       <div>
       <NavBar />
-      <MessageList messages = {this.state.messages} username = {this.state.currentUser.name} oldname = {this.state.olduser} newname = {this.state.newuser}/>
+      <MessageList messages = {this.state.messages} username = {this.state.currentUser.name}/>
       <ChatBar addMessage={this.addMessage} addUser={this.addUser}/>
+      
       </div>
     );
   }
 }
 export default App;
+
+// you will add a prop for color --- and maybe the style sheet choice too
