@@ -36,6 +36,7 @@ wss.on('connection', (ws) => {
       break;
       case "postNotification":
         clientMessage.type = 'incomingNotification'; 
+        clientMessage.content = `${clientMessage.oldname} changed their name to ${clientMessage.newname} `;
         wss.broadcast(JSON.stringify(clientMessage));
         break;
       default:
@@ -53,16 +54,3 @@ wss.on('connection', (ws) => {
 });
 
 
-/*
-switch(data.type) {
-      case "incomingMessage":
-        // handle incoming message
-        break;
-      case "incomingNotification":
-        // handle incoming notification
-        break;
-      default:
-        // show an error in the console if the message type is unknown
-        throw new Error("Unknown event type " + data.type);
-    }
-    */
