@@ -27,11 +27,27 @@ wss.on('connection', (ws) => {
   ws.on('message', message => {
     console.log(message);//printing sent value to the terminal
     const clientMessage = JSON.parse(message);
-    clientMessage.id = uuidv4();
-    clientMessage.type = 'incomingNotification'; 
-    const outgoingMessage = clientMessage;
-    console.log(`------------------${outgoingMessage}`);
-    wss.broadcast(JSON.stringify(outgoingMessage));
+    switch(clientMessage.type) {
+      case "incomingMessage":
+        // handle incoming message
+        clientMessage.id = uuidv4();
+        clientMessage.type = "postMessage"; //-----will this overwrite it's old type?
+        wss.broadcast(JSON.stringify(clientMessage));
+      break;
+      case "postNotification":
+        clientMessage.type = 'incomingNotification'; 
+        wss.broadcast(JSON.stringify(clientMessage));
+        break;
+      default:
+        // show an error in the console if the message type is unknown
+        //throw new Error("Unknown event type " + clientMessage.type);
+        console.log('no known type')
+    }
+    // clientMessage.id = uuidv4();
+    // clientMessage.type = 'incomingNotification'; 
+    // const outgoingMessage = clientMessage;
+    // console.log(`------------------${outgoingMessage}`);
+    // wss.broadcast(JSON.stringify(outgoingMessage));
   });
   ws.on('close', () => console.log('Client disconnected'));
 });

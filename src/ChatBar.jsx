@@ -1,35 +1,4 @@
-// class NewMessageForm extends Component {
-//   render() {
-//   const onSubmit = evt => {
-//   evt.preventDefault();
-//   const messageNameInput = evt.target.elements.content;
-//   this.props.addMessageName(taskMessageInput.value);
-//   taskMessageInput.value = "";
-//   };
 
-//event handler is triggered by each key stroke - detect enter key. 
-// when the enter is detected i call the function in the parent 
-  
-//   return (
-//   <form onSubmit={onSubmit}>
-//   <input type="text" name="taskName" placeholder="Write Task Name" />
-//   <button type="submit">Add</button>
-//   </form>
-//   );
-//   }
-//   }
-
-
-// handleSubmit = event => {
-//   const comment = this. state.comment;
-//   this.addQuote(comment);
-//   this.setState({comment:''});
-// }
-
-/* <form onSubmit={onSubmit}>
-<input type="text" className="chatbar-username" placeholder="Your Name" />
-<input type="text" className="chatbar-message" placeholder="Type a message and hit ENTER" />
-</form> */
 
 
 
@@ -37,8 +6,6 @@
 import React from 'react';
 
 export default class ChatBar extends React.Component {
-
-  
 
   handleMessage = event => {
     event.preventDefault();
@@ -63,10 +30,6 @@ export default class ChatBar extends React.Component {
     this.props.addUser(userName); //message 
     }
   };
-
-
-
-
 
   render() {
   return (
