@@ -8,17 +8,15 @@ export default class MessageList extends React.Component {
       message.type === "incomingNotification" ?
          (<div className="notification">
             <span className="notification-content">{message.content}</span>
-          </div> 
+          </div>  
         )
         : 
-        <Message key={message.id} message={message}  id={message.id}/>
+        <Message id={message.id} key={message.id} message={message} />
         ))
    
     return (
     <main className="messages">
       {displaymessages}
-      <div className="message system">
-      </div>
     </main>
     )
   }

@@ -21,9 +21,6 @@ h1 {
     right: 0;
   }
 
-  
-
-
   .chatbar-message,
   .chatbar-username {
     //border: 1px solid rgb(60, 60, 60);
@@ -37,11 +34,8 @@ h1 {
   .chatbar-message {
     //width: 400px;
     float: left;
-    //justify-content: flex-start;
-  }
-
-  .chatbar-message {
     flex: 8;
+    //justify-content: flex-start;
   }
 
   .chatbar-username {
@@ -97,4 +91,17 @@ h1 {
     text-decoration: none;
   }
 
+  .counter {
+    color: white;
+    float:right;
+    font-size: 18px;
+    line-height: 60px;
+  }
+
+  .notification-content {
+    font-style: italic;
+    margin: 30%;
+  }
+
+  
  

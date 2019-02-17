@@ -1,27 +1,13 @@
-
-
-
-
-  
 import React from 'react';
-
 export default class ChatBar extends React.Component {
-
   handleMessage = event => {
     event.preventDefault();
-    console.log('firing')
-    //const message = this.state.message;
     if(event.key == 'Enter'){
-      console.log('namefire!');
-      console.log(event.target.value);
-      //this.setState({ value: event.target.value })
-      const message = event.target.value;
-    this.props.addMessage(message); //message
-    //this.setState({ message: event.target.value });
-    //this.target.value = event.target.value;
+    const message = event.target.value;
+    this.props.addMessage(message); //this was passed down from the app.js hence props.addmessage
     }
   };
-
+  //apparently i can't attach this to a tab key because of dom security issues... but that would make more sense for traversing the two input boxes
   handleUser = event => {
     event.preventDefault();
     console.log(event.target.value);
@@ -30,7 +16,6 @@ export default class ChatBar extends React.Component {
     this.props.addUser(userName); //message 
     }
   };
-
   render() {
   return (
     <footer className="chatbar">
