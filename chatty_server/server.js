@@ -37,7 +37,7 @@ wss.on('connection', (ws) => {
       break;
       case "postNotification":
         clientMessage.type = 'incomingNotification'; 
-        clientMessage.key = uuidv4(); //here did nothing to get rid of error
+        //clientMessage.key = uuidv4(); //here did nothing to get rid of error
         clientMessage.content = `${clientMessage.oldname} changed their name to ${clientMessage.newname} `; 
         wss.broadcast(JSON.stringify(clientMessage));
         break;
