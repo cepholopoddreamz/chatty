@@ -23,9 +23,9 @@ export default class ChatBar extends React.Component {
      <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyUp={this.handleMessage}/>
 
     </footer>
-    );
-  }
-}
+    )
+  };
+};
 
 
   
