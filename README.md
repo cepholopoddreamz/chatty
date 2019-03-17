@@ -1,6 +1,6 @@
 # Chatty APP
 
-A simple chat app, that logs user name changes, and can be open on more then one window, and print messages posted by the other. 
+A simple chat app, that logs user name changes, and can be open on more then one window, and print messages posted by the other.  This APP uses React, Webpack and Babel. This was created as part of Week 6 <a href="https://www.lighthouselabs.ca">Lighthouse Labs</a> course work. 
 
 
 React Boilerplate
