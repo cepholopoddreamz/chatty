@@ -1,3 +1,8 @@
+# Chatty APP
+
+A simple chat app, that logs user name changes, and can be open on more then one window, and print messages posted by the other. 
+
+
 React Boilerplate
 =====================
 
